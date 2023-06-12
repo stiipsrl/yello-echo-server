@@ -47,14 +47,14 @@ export class PrivateChannel {
 
         let authHostSelected = authHosts[0] || 'http://localhost';
 
-        if (socket.request.headers.referer) {
-            let referer = url.parse(socket.request.headers.referer);
+        if (socket.request.headers.host) {
+            let referer = url.parse(this.options.protocol+'://'+socket.request.headers.host);
 
             for (let authHost of authHosts) {
                 authHostSelected = authHost;
 
                 if (this.hasMatchingHost(referer, authHost)) {
-                    authHostSelected = `${referer.protocol}//${referer.host}`;
+                    authHostSelected = `${referer.protocol}//${referer.hostname}`;
                     break;
                 }
             };
