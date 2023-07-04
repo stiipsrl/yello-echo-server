@@ -16,7 +16,12 @@ var options = {
 	"host": "0.0.0.0",
 	"port": "6001",
 	"protocol": "http",
-	"socketio": {},
+	"socketio": {
+		"cors": {
+			"origin": true,
+			"credentials": true
+		}
+	},
 	"sslCertPath": "/etc/nginx/ssl/default.crt",
 	"sslKeyPath": "/etc/nginx/ssl/default.key",
 	"subscribers": {"http": true, "redis": true}
